@@ -1,12 +1,12 @@
 package com.example;
 
-import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
-public class AnimalTest  extends TestCase {
+public class AnimalTest  {
     private Animal animal;
     private static final String UNSUPPORTED_ANIMAL_KIND = "unsupported animal kind";
     private static final String TEXT_EXCEPTION = "Неизвестный вид животного, используйте значение Травоядное или Хищник";
@@ -34,5 +34,6 @@ public class AnimalTest  extends TestCase {
         assertEquals("Ответ не соответствует ожидаемому",
                 FAMILY, actual);
     }
+
 }
 
