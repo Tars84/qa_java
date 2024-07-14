@@ -1,11 +1,13 @@
 package com.example;
 
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -26,11 +28,12 @@ public class FelineTest {
     @Test
     public void testGetFamily() {
         String actual = feline.getFamily();
-        Mockito.verify(feline, Mockito.times(1)).getFamily();
-
-        assertEquals("Семейство животного не соответствует фактическому",
-                expected, actual);
-    }
+            String expectedFelineFamilyName = "Кошачьи";
+            MatcherAssert.assertThat("Некорректное название семейства кошачьих",
+                    new Feline().getFamily(),
+                    equalTo(expectedFelineFamilyName)
+            );
+        }
 
 
     @Test
@@ -45,10 +48,10 @@ public class FelineTest {
     @Test
     public void testTestGetKittens() {
         int actual = feline.getKittens(kittensCount);
-        Mockito.verify(feline).getKittens(Mockito.anyInt());
-
-        assertEquals("Количество котят в потомстве не соответствует ожидаемому",
-                kittensCount, actual);
+        MatcherAssert.assertThat("Некорректное количество котят",
+                new Feline().getKittens(kittensCount),
+                equalTo(kittensCount)
+        );
     }
 
 }
