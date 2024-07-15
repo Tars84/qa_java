@@ -20,11 +20,11 @@ public class LionTest {
     @Test
     public void lionFoodIsMeatTest() throws Exception {
         Lion lion = new Lion("Самец", feline);
-        List<String> exception = List.of("Животные", "Птицы", "Рыба");
-        Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        assertEquals(feline.getFood("Хищник"), exception);
+        List<String> listFoodExpected = List.of("Животные", "Птицы", "Рыба");
+        Mockito.when(feline.getFood("Хищник")).thenReturn(listFoodExpected);
+        List<String> listFoodActual = lion.getFood();
+        assertEquals("Ожидается" + listFoodExpected.toString(),listFoodExpected,listFoodActual.toString());
     }
-
     @Test
     public void incorrectLionSexTest() throws Exception {
         Exception exception = Assert.assertThrows(Exception.class, () -> {
